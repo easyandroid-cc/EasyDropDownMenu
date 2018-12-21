@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/easyDropDownMenu_Title"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:paddingTop="1dp"
+    android:paddingRight="5dp"
+    android:saveEnabled="true"
+    android:freezesText="true"
+    android:paddingLeft="5dp"
+    android:textColor="#333333"
+    android:singleLine="true"
+    android:text="加载.."
+    android:textSize="13sp" />

@@ -1,0 +1,16 @@
+<resources>
+    <!--引用系统样式 -->
+    <declare-styleable name="EasyDropDownMenus">
+        <attr name="EasyDropDownMenuStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="EasyDropDownMenu">
+        <!--title-->
+        <attr name="menuTitle" format="reference|string" />
+        <!--menuContent ResourceId-->
+        <attr name="menuContentView" format="reference" />
+        <!--menuTitle ResourceId-->
+        <attr name="menuTitleView" format="reference" />
+    </declare-styleable>
+
+</resources>

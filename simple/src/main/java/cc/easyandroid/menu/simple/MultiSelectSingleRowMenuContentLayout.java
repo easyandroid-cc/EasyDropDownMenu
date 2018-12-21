@@ -1,0 +1,126 @@
+package cc.easyandroid.menu.simple;
+
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.AttributeSet;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
+import cc.easyandroid.listfiltermenu.simple.R;
+
+public class MultiSelectSingleRowMenuContentLayout extends RelativeLayout implements EasyFlexibleAdapter.OnItemClickListener {
+    RecyclerView recyclerView;
+    EasyFlexibleAdapter adapter = new EasyFlexibleAdapter(this);
+
+    final Model mModel = new Model();
+
+    public MultiSelectSingleRowMenuContentLayout(Context context) {
+        super(context);
+        initView(context);
+    }
+
+    public MultiSelectSingleRowMenuContentLayout(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        initView(context);
+    }
+
+    public MultiSelectSingleRowMenuContentLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initView(context);
+    }
+
+    View reset;
+    View submit;
+    Toast toast;
+
+    public void initView(Context context) {
+        adapter.setMode(EasyFlexibleAdapter.MODE_MULTI);
+        View.inflate(context, R.layout.multiselectlist_layout, this);
+        recyclerView = findViewById(R.id.recyclerview);
+        reset = findViewById(R.id.reset);
+        submit = findViewById(R.id.submit);
+        mModel.setDefaultSelect(0);
+        reset.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapter.clearSelection();
+            }
+        });
+        submit.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mModel.setChildSelectIndex(adapter.getSelectedPositions());
+                if (toast == null) {
+                    toast = Toast.makeText(getContext(), TextUtils.join(",", adapter.getSelectedPositions()), Toast.LENGTH_SHORT);
+                }
+                toast.setText(TextUtils.join(",", adapter.getSelectedPositions()));
+                toast.show();
+            }
+        });
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(adapter);
+        final ArrayList<Item1> lists4 = dd1();
+        adapter.addItems(lists4);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        adapter.clearSelection();
+        for (int position : mModel.selectPosition) {
+            adapter.addSelection(position);
+            adapter.notifyItemChanged(position);
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+    }
+
+    public ArrayList<Item1> dd1() {
+        Text1 text1 = new Gson().fromJson(Text.text, Text1.class);
+        final ArrayList<Item1> lists = text1.getResult();
+        return lists;
+    }
+
+    public ArrayList<Item2> dd2() {
+        Text2 text1 = new Gson().fromJson(Text.text, Text2.class);
+        final ArrayList<Item2> lists = text1.getResult();
+        return lists;
+    }
+
+    @Override
+    public boolean onItemClick(View view, int position) {
+        System.out.println("cgp size =" + adapter.getSelectedPositions().size());
+        return false;
+    }
+
+    public class Model {
+        public List<Integer> selectPosition = new ArrayList<>();
+
+        public Model() {
+        }
+
+        public void setChildSelectIndex(List<Integer> child) {
+            this.selectPosition.clear();
+            this.selectPosition.addAll(child);
+        }
+
+        public void setDefaultSelect(int position) {
+            selectPosition.add(position);
+        }
+    }
+}
