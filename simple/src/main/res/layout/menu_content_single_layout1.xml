@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cc.easyandroid.menu.simple.EasyMenuContentLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<cc.easyandroid.menu.simple.ComplexMenuContentLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/pop_filter_ll"
     android:layout_width="match_parent"
     android:layout_height="300dp"
@@ -79,4 +79,4 @@
             android:textSize="20sp" />
     </LinearLayout>
 
-</cc.easyandroid.menu.simple.EasyMenuContentLayout>
+</cc.easyandroid.menu.simple.ComplexMenuContentLayout>

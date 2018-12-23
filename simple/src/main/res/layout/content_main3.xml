@@ -25,7 +25,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:menuContentView="@layout/content_view"
             app:menuTitle="民治"
             app:menuTitleView="@layout/menu_title_layout1" />
 
@@ -40,9 +39,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:menuTitleView="@layout/menu_title_layout1"
-            app:menuContentView="@layout/menu_content_single_layout1"
-            app:menuTitle="民治" />
+            app:menuTitle="民治"
+            app:menuTitleView="@layout/menu_title_layout1" />
+
         <cc.easyandroid.menu.EasyDropDownMenu
             android:id="@+id/menuFilter3"
             android:layout_width="0dp"
@@ -53,10 +52,10 @@
             android:saveEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menuTitleView="@layout/menu_title_layout1"
             app:layout_constraintTop_toTopOf="parent"
-            app:menuContentView="@layout/menu_content_single_layout1"
-            app:menuTitle="民治" />
+            app:menuTitle="民治"
+            app:menuTitleView="@layout/menu_title_layout1" />
+
         <cc.easyandroid.menu.EasyDropDownMenu
             android:id="@+id/menuFilter4"
             android:layout_width="0dp"
@@ -67,21 +66,20 @@
             android:saveEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menuTitleView="@layout/menu_title_layout1"
             app:layout_constraintTop_toTopOf="parent"
-            app:menuContentView="@layout/menu_content_single_layout1"
-            app:menuTitle="民治" />
+            app:menuTitle="民治"
+            app:menuTitleView="@layout/menu_title_layout1" />
     </cc.easyandroid.menu.EasyDropDownMenuContainer>
 
     <RelativeLayout
         android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:background="#00000000"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"

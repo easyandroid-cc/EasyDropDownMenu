@@ -1,13 +1,16 @@
 package cc.easyandroid.menu.simple;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.widget.GridView;
+
+import cc.easyandroid.easyrecyclerview.EasyRecyclerView;
 
 /**
  * Created by cgpllx on 2016/10/25.
  */
-public class CustomGridView extends GridView {
+public class CustomGridView extends RecyclerView {
     public CustomGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }

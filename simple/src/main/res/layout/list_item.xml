@@ -16,7 +16,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:singleLine="true"
-        android:textColor="@drawable/menutitle_textcolor_selector"
+        android:textColor="@color/menutitle_textcolor_selector"
         android:textSize="14sp" />
     <ImageView
         android:id="@+id/easyListFilter_ItemDisplayImage"

@@ -10,7 +10,7 @@
     android:freezesText="true"
     android:drawableRight="@drawable/qf_arrow_select"
     android:paddingLeft="5dp"
-    android:textColor="#333333"
+    android:textColor="@color/menutitle_textcolor_selector"
     android:singleLine="true"
     android:text="加载.."
     android:textSize="13sp" />

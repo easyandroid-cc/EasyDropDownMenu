@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <cc.easyandroid.menu.simple.EasyMenuContentLayout
+    <cc.easyandroid.menu.simple.ComplexMenuContentLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </cc.easyandroid.menu.simple.EasyMenuContentLayout>
+    </cc.easyandroid.menu.simple.ComplexMenuContentLayout>
 </android.support.constraint.ConstraintLayout>

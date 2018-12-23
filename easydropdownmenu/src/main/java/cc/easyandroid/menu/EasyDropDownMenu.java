@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class EasyDropDownMenu extends AnimView {
-    protected CharSequence mDefultMenuTitle;
+public class EasyDropDownMenu extends AnimView implements IMenu {
+    protected CharSequence mDefaultMenuTitle;
     protected TextView mTitleTextView;//顯示标题的textview控件
     protected ViewGroup mMenuContentContainer;//容器這個容器一般是公用的(這個需要傳進來)
     protected ViewGroup mMenuContentView;//
@@ -21,6 +21,9 @@ public class EasyDropDownMenu extends AnimView {
 
     public void setMenuContentView(ViewGroup menuContentView) {
         this.mMenuContentView = menuContentView;
+        if (mMenuContentView instanceof IMenuHandle) {
+            ((EasyDropDownMenuContent) mMenuContentView).bandMenu(this);
+        }
     }
 
     public ViewGroup getMenuContentView() {
@@ -46,7 +49,7 @@ public class EasyDropDownMenu extends AnimView {
 
         int menuTitleLayoutResourceId = a.getResourceId(R.styleable.EasyDropDownMenu_menuTitleView, R.layout.menu_title_view);
         CharSequence menuTitle = a.getText(R.styleable.EasyDropDownMenu_menuTitle);
-        int menuContentViewResourceId = a.getResourceId(R.styleable.EasyDropDownMenu_menuContentView, R.layout.menu_content_view);
+        int menuContentViewResourceId = a.getResourceId(R.styleable.EasyDropDownMenu_menuContentView, 0);
 
         a.recycle();
         if (menuTitleLayoutResourceId > 0) {
@@ -56,7 +59,7 @@ public class EasyDropDownMenu extends AnimView {
             setMenuContentViewResourceId(menuContentViewResourceId);
         }
         if (!TextUtils.isEmpty(menuTitle)) {
-            setDefultMenuTitle(menuTitle);
+            setDefaultMenuTitle(menuTitle);
             setMenuTitle(menuTitle);
         }
     }
@@ -67,16 +70,21 @@ public class EasyDropDownMenu extends AnimView {
     }
 
     public void setMenuTitle(CharSequence menuTitle, boolean forceHighlight) {
+        if (TextUtils.isEmpty(menuTitle)) {
+            mTitleTextView.setText(mDefaultMenuTitle);
+            mTitleTextView.setSelected(false);
+            return;
+        }
         mTitleTextView.setText(menuTitle);
-        if (!mDefultMenuTitle.equals(menuTitle) || forceHighlight) {
-            mTitleTextView.setEnabled(true);
+        if (!mDefaultMenuTitle.equals(menuTitle) || forceHighlight) {
+            mTitleTextView.setSelected(true);
         } else {//title 内容 相同
-            mTitleTextView.setEnabled(false);
+            mTitleTextView.setSelected(false);
         }
     }
 
-    public void setDefultMenuTitle(CharSequence menuTitle) {
-        mDefultMenuTitle = menuTitle;
+    public void setDefaultMenuTitle(CharSequence menuTitle) {
+        mDefaultMenuTitle = menuTitle;
     }
 
     /**
@@ -87,7 +95,7 @@ public class EasyDropDownMenu extends AnimView {
     public void setMenuTitleLayoutResourceId(int menuTitleLayoutResourceId) {
         View menuTitleView = View.inflate(getContext(), menuTitleLayoutResourceId, this);
         mTitleTextView = menuTitleView.findViewById(R.id.easyDropDownMenu_Title);
-        mTitleTextView.setEnabled(false);
+        mTitleTextView.setActivated(false);
         mTitleTextView.setSaveEnabled(false);
         mTitleTextView.setFreezesText(false);
         menuTitleView.setOnClickListener(new OnClickListener() {
@@ -121,6 +129,12 @@ public class EasyDropDownMenu extends AnimView {
     }
 
     public void show() {
+        if (mMenuContentView instanceof IMenuHandle) {
+            if (((IMenuHandle) mMenuContentView).isEmpty()) {//检查数据是否是null，
+                ((IMenuHandle) mMenuContentView).loadData();
+                return;
+            }
+        }
         if (!isShow() && showInAnim(mMenuContentView)) {
             if (showlistener != null) {
                 showlistener.onShow(this);
@@ -134,10 +148,15 @@ public class EasyDropDownMenu extends AnimView {
     }
 
     @Override
+    public CharSequence getDefaultMenuTitle() {
+        return mDefaultMenuTitle;
+    }
+
+    @Override
     protected void showView(View animView) {
         setFocusableInTouchMode(false);
-        mTitleTextView.setSelected(true);
-        setSelected(true);//当前layout 设置setSelected 位true
+        mTitleTextView.setActivated(true);
+        setActivated(true);//当前layout 设置setSelected 位true
     }
 
     /**
@@ -150,13 +169,13 @@ public class EasyDropDownMenu extends AnimView {
             dismissListener.onDismiss(this);
         }
         mMenuContentContainer.removeView(mMenuContentView);
-        mTitleTextView.setSelected(false);
+        mTitleTextView.setActivated(false);
         setFocusableInTouchMode(false);
         setFocusable(false);//当前layout
     }
 
     public boolean isShow() {
-        return mTitleTextView.isSelected() || showAnimIsRunning();
+        return mTitleTextView.isActivated() || showAnimIsRunning();
     }
 
 
@@ -166,6 +185,13 @@ public class EasyDropDownMenu extends AnimView {
 
     public interface OnMenuShowlistener {
         void onShow(EasyDropDownMenu v);
+    }
+
+    /**
+     * 没有数据时候的回掉接口
+     */
+    public interface OnMenuWithoutDataClickLinstener {
+        void withoutData(EasyDropDownMenu menu);
     }
 
     OnMenuDismissListener dismissListener;
@@ -179,5 +205,15 @@ public class EasyDropDownMenu extends AnimView {
         this.showlistener = showlistener;
     }
 
+    /**
+     * 设置没有数据时候的监听回掉
+     *
+     * @param menuWithoutDataClickLinstener menuWithoutDataClickLinstener
+     */
+    public void setOnMenuWithoutDataClickLinstener(OnMenuWithoutDataClickLinstener menuWithoutDataClickLinstener) {
+        this.menuWithoutDataClickLinstener = menuWithoutDataClickLinstener;
+    }
+
+    private OnMenuWithoutDataClickLinstener menuWithoutDataClickLinstener;
 
 }

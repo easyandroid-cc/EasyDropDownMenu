@@ -1,13 +1,9 @@
 package cc.easyandroid.menu.simple;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -15,8 +11,9 @@ import java.util.ArrayList;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.listfiltermenu.simple.R;
+import cc.easyandroid.menu.EasyDropDownMenuContent;
 
-public class SingleListMenuContentLayout extends RelativeLayout implements EasyFlexibleAdapter.OnItemClickListener {
+public class SingleListMenuContentLayout extends EasyDropDownMenuContent implements EasyFlexibleAdapter.OnItemClickListener {
     RecyclerView recyclerView;
     EasyFlexibleAdapter adapter = new EasyFlexibleAdapter(this);
 
@@ -25,37 +22,37 @@ public class SingleListMenuContentLayout extends RelativeLayout implements EasyF
         initView(context);
     }
 
-    public SingleListMenuContentLayout(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        initView(context);
-    }
-
-    public SingleListMenuContentLayout(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initView(context);
-    }
 
     public void initView(Context context) {
         adapter.setMode(EasyFlexibleAdapter.MODE_SINGLE);
-        View.inflate(context, R.layout.singlelist_layout, this);
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(adapter);
+
+    }
+
+    @Override
+    protected int getResourcesId() {
+        return R.layout.singlelist_layout;
+    }
+
+    @Override
+    public void loadData() {
         final ArrayList<Item1> lists4 = dd1();
+        Item1 item1 = new Item1();
+        item1.setName("不限");
+        item1.setMenuItemTag(getDefaultMenuTitle());
+        lists4.add(0, item1);
         adapter.addItems(lists4);
         adapter.notifyDataSetChanged();
+        show();
     }
 
     @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-
+    public boolean isEmpty() {
+        return adapter.isEmpty();
     }
 
-    @Override
-    protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
-    }
 
     public ArrayList<Item1> dd1() {
         Text1 text1 = new Gson().fromJson(Text.text, Text1.class);
@@ -63,23 +60,12 @@ public class SingleListMenuContentLayout extends RelativeLayout implements EasyF
         return lists;
     }
 
-    public ArrayList<Item2> dd2() {
-        Text2 text1 = new Gson().fromJson(Text.text, Text2.class);
-        final ArrayList<Item2> lists = text1.getResult();
-        return lists;
-    }
-
-    Toast toast;
-
     @Override
     public boolean onItemClick(View view, int position) {
         System.out.println("cgp size =" + adapter.getSelectedPositions().size());
         Item1 item1 = (Item1) adapter.getItem(position);
-        if (toast == null) {
-            toast = Toast.makeText(view.getContext(), item1.getName(), Toast.LENGTH_SHORT);
-        }
-        toast.setText(item1.getName());
-        toast.show();
+        setMenuTitle(item1.getMenuItemTag());
+        hide();
         return false;
     }
 }

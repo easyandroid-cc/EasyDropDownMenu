@@ -5,17 +5,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.List;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
 import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
+import cc.easyandroid.menu.IMenuItem;
 
 /**
  * Created by cgpllx on 2016/10/17.
  */
-public class Item1 extends Text1.ResultEntity implements IFlexible<Item1.ListViewHolder> {
+public class Item1 extends Text1.ResultEntity implements IFlexible<Item1.ListViewHolder>, IMenuItem {
 
     @Override
     public boolean isEnabled() {
@@ -58,6 +60,32 @@ public class Item1 extends Text1.ResultEntity implements IFlexible<Item1.ListVie
         viewHolder.setData(this);
     }
 
+    CharSequence menuItemTag;
+
+    public void setMenuItemTag(CharSequence menuItemTag) {
+        this.menuItemTag = menuItemTag;
+    }
+
+    @Override
+    public CharSequence getMenuItemTag() {
+        if (menuItemTag == null) {
+            return getName();
+        } else {
+            return menuItemTag;
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return getMenuItemTag().toString();
+    }
+
+    @Override
+    public HashMap<String, String> getParameter() {
+        return null;
+    }
+
     public class ListViewHolder extends FlexibleViewHolder {
         TextView textView;
 
@@ -69,7 +97,7 @@ public class Item1 extends Text1.ResultEntity implements IFlexible<Item1.ListVie
         @Override
         public void onClick(View view) {
             super.onClick(view);
-        //Toast.makeText(view.getContext(), "po" + position, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(view.getContext(), "po" + position, Toast.LENGTH_SHORT).show();
 
         }
 

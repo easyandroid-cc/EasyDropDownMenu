@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--<item android:color="@color/colorAccent" android:state_pressed="true"/>-->
-    <item android:color="@color/q_999999" android:state_selected="true"/>
-    <item android:color="@color/q_999999" android:state_checked="true"/>
-    <item android:color="@color/q_999999" android:state_focused="true"/>
-    <!--<item android:color="@color/q_999999" android:state_activated="true"/>-->
+    <item android:color="@color/colorAccent" android:state_selected="true"/>
+    <item android:color="@color/colorAccent" android:state_checked="true"/>
+    <item android:color="@color/colorAccent" android:state_focused="true"/>
+    <item android:color="@color/colorAccent" android:state_activated="true"/>
     <!--<item android:color="@color/colorAccent" android:state_enabled="true"/>-->
     <item android:color="@color/colorPrimaryDark"/>
 

@@ -1,18 +1,13 @@
 package cc.easyandroid.menu.simple;
 
 import android.content.Context;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,19 +15,16 @@ import java.util.HashMap;
 import java.util.List;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
-import cc.easyandroid.easyrecyclerview.EasyRecyclerView;
 import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
 import cc.easyandroid.easyrecyclerview.items.IFlexible;
-import cc.easyandroid.easyrecyclerview.items.IHeaderSpanFill;
 import cc.easyandroid.listfiltermenu.simple.R;
 
-public class Item2 extends Text2.ResultEntity implements IFlexible<Item2.ListViewHolder> ,IHeaderSpanFill {
-    HashMap<String, String> para = new HashMap<>();
+public class Item2_Child extends Text2.ResultEntity implements IFlexible<Item2_Child.ListViewHolder> {
 
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 
     @Override
@@ -41,7 +33,7 @@ public class Item2 extends Text2.ResultEntity implements IFlexible<Item2.ListVie
 
     @Override
     public boolean isSelectable() {
-        return false;
+        return true;
     }
 
     @Override
@@ -51,12 +43,12 @@ public class Item2 extends Text2.ResultEntity implements IFlexible<Item2.ListVie
 
     @Override
     public int getSpanSize(int spanCount, int position) {
-        return 1;
+        return spanCount;
     }
 
     @Override
     public int getLayoutRes() {
-        return R.layout.list_item_2;
+        return R.layout.item_menu_gridview;
     }
 
 
@@ -72,40 +64,21 @@ public class Item2 extends Text2.ResultEntity implements IFlexible<Item2.ListVie
 
     public class ListViewHolder extends FlexibleViewHolder {
         TextView textView;
-      //  RecyclerView gridview;
 
         public ListViewHolder(final View header_ad, EasyFlexibleAdapter adapter) {
             super(header_ad, adapter);
-            textView = header_ad.findViewById(R.id.easyListFilter_ItemDisplayName);
-           // gridview = header_ad.findViewById(R.id.gridview);
-           // gridview.setLayoutManager(new GridLayoutManager(header_ad.getContext(),3));
+            textView = header_ad.findViewById(R.id.item_title_tv);
         }
 
         @Override
         public void onClick(View view) {
             super.onClick(view);
-//            Toast.makeText(view.getContext(), "po" + position, Toast.LENGTH_SHORT).show();
         }
 
-        public void setData(final Item2 entity) {
+        public void setData(final Item2_Child entity) {
             textView.setText(entity.getName());
-//            EasyFlexibleAdapter gridViewAdapter = new EasyFlexibleAdapter(new EasyFlexibleAdapter.OnItemClickListener() {
-//                @Override
-//                public boolean onItemClick(View view, int position) {
-//                    return false;
-//                }
-//            });
-//            ArrayList<Item2_Child> item2s=entity.getSubregions();
-//            gridViewAdapter.setMode(EasyFlexibleAdapter.MODE_MULTI);
-//              gridview.setAdapter(gridViewAdapter);
-//            if(item2s!=null){
-//                gridViewAdapter.setItems(item2s);
-//                gridViewAdapter.notifyDataSetChanged();
-//            }
-            // gridview.setItemChecked(entity.getEasyItemManager().getChildSelectTempPosition(), true);
 
         }
     }
-
 
 }

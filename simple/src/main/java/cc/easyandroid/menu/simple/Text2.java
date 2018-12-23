@@ -73,7 +73,7 @@ public class Text2 implements Serializable {
          * name : 蛇口
          */
 
-        private ArrayList<Item2> subregions;
+        private ArrayList<Item2_Child> subregions;
 
         public void setFullPinyin(String fullPinyin) {
             this.fullPinyin = fullPinyin;
@@ -95,7 +95,7 @@ public class Text2 implements Serializable {
             this.name = name;
         }
 
-        public void setSubregions(ArrayList<Item2> subregions) {
+        public void setSubregions(ArrayList<Item2_Child> subregions) {
             this.subregions = subregions;
         }
 
@@ -119,7 +119,7 @@ public class Text2 implements Serializable {
             return name;
         }
 
-        public ArrayList<Item2> getSubregions() {
+        public ArrayList<Item2_Child> getSubregions() {
             return subregions;
         }
 
@@ -132,7 +132,7 @@ public class Text2 implements Serializable {
             this.latitude = in.readDouble();
             this.longitude = in.readDouble();
             this.name = in.readString();
-            this.subregions = new ArrayList<Item2>();
+            this.subregions = new ArrayList<Item2_Child>();
             in.readList(this.subregions, List.class.getClassLoader());
         }
 

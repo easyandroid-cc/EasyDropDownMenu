@@ -17,15 +17,12 @@
         android:paddingRight="10dp"
         android:singleLine="true"
         android:text="ddddddd"
-        android:textColor="@drawable/menutitle_textcolor_selector"
+        android:textColor="@color/menutitle_textcolor_selector"
         android:textSize="14sp" />
 
-    <cc.easyandroid.menu.simple.CustomGridView
-        android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:scrollbars="none"
-        android:choiceMode="singleChoice"
-        android:numColumns="3"
-        android:layout_height="match_parent" />
+    <!--<cc.easyandroid.menu.simple.CustomGridView-->
+        <!--android:id="@+id/gridview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp" />-->
 
 </LinearLayout>
