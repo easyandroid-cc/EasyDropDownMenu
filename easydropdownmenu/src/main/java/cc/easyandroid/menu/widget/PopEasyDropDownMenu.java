@@ -1,22 +1,13 @@
 package cc.easyandroid.menu.widget;
 
-import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 
-import cc.easyandroid.easyrecyclerview.core.RefreshHeaderLayout;
 import cc.easyandroid.menu.core.AnimatorPopup;
 
 
@@ -73,7 +64,7 @@ public class PopEasyDropDownMenu extends EasyDropDownMenu {
     protected void setupPupupWindow(final PopupWindow pupupWindow) {
         //pupupWindow.setBackgroundDrawable(new ColorDrawable(Color.argb(0, 0, 0, 0)));
         pupupWindow.setOutsideTouchable(true);
-        pupupWindow.setFocusable(true);
+        pupupWindow.setFocusable(false);
         pupupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NEEDED);
         pupupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         pupupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {

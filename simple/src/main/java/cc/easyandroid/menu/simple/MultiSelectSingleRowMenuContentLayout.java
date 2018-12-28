@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 
@@ -33,6 +34,7 @@ public class MultiSelectSingleRowMenuContentLayout extends AbsSingleRowMenuConte
 
     public void initView(Context context) {
         setContentView(R.layout.multiselectlist_layout);
+        View view = findViewById(R.id.content);
         getAdapter().setMode(EasyFlexibleAdapter.MODE_MULTI);
         recyclerView = findViewById(R.id.recyclerview);
         reset = findViewById(R.id.reset);
@@ -52,7 +54,10 @@ public class MultiSelectSingleRowMenuContentLayout extends AbsSingleRowMenuConte
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(getAdapter());
-
+        int heightPixels = context.getResources().getDisplayMetrics().heightPixels;
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();//
+        layoutParams.height = (int) (heightPixels * 0.6);
+        view.requestLayout();
     }
 
     @Override

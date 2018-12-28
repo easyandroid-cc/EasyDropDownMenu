@@ -47,11 +47,8 @@ public class SingleListMenuContentLayout extends AbsSingleRowMenuContent {
         recyclerView.setAdapter(getAdapter());
         int heightPixels = context.getResources().getDisplayMetrics().heightPixels;
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();//
-        System.out.println("cgp  layoutParams.height=" + layoutParams.height);
-        System.out.println("cgp  heightPixels=" + heightPixels);
         layoutParams.height = (int) (heightPixels * 0.6);
-//        layoutParams.height = 500;
-        view.setLayoutParams(layoutParams);
+        view.requestLayout();
     }
 
     @Override

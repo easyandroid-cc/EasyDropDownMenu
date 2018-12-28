@@ -5,6 +5,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.google.gson.Gson;
 
@@ -72,6 +73,7 @@ public class MultiSelectTowRowMenuContentLayout extends EasyDropDownMenuContent 
         setContentView(R.layout.multiselect_towrowlist_layout);
         adapter1.setMode(EasyFlexibleAdapter.MODE_SINGLE);
         adapter2.setMode(EasyFlexibleAdapter.MODE_MULTI);
+        View content = findViewById(R.id.content);
         recyclerView1 = findViewById(R.id.recyclerView1);
         recyclerView1.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView1.setAdapter(adapter1);
@@ -116,7 +118,10 @@ public class MultiSelectTowRowMenuContentLayout extends EasyDropDownMenuContent 
                 hide();
             }
         });
-
+        int heightPixels = context.getResources().getDisplayMetrics().heightPixels;
+        ViewGroup.LayoutParams layoutParams = content.getLayoutParams();//
+        layoutParams.height = (int) (heightPixels * 0.6);
+        content.requestLayout();
 
     }
 
