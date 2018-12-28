@@ -59,6 +59,10 @@ public class Item2 extends Text2.ResultEntity implements IFlexible<Item2.ListVie
         return R.layout.list_item_2;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 
     @Override
     public ListViewHolder createViewHolder(EasyFlexibleAdapter easyFlexibleListViewAdapter, LayoutInflater inflater, ViewGroup viewGroup) {

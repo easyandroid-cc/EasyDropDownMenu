@@ -1,21 +1,18 @@
-package cc.easyandroid.menu;
+package cc.easyandroid.menu.core;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-public abstract class EasyDropDownMenuContent extends RelativeLayout implements IMenuHandle {
+import cc.easyandroid.menu.core.IMenu;
+import cc.easyandroid.menu.core.IMenuContent;
+
+public abstract class EasyDropDownMenuContent extends RelativeLayout implements IMenuContent {
 
     protected IMenu menu;
 
     public EasyDropDownMenuContent(Context context) {
         super(context);
-        initView(context);
-    }
-
-
-    private void initView(Context context) {
-        View.inflate(context, getResourcesId(), this);
     }
 
     @Override
@@ -25,7 +22,10 @@ public abstract class EasyDropDownMenuContent extends RelativeLayout implements 
 
     public void setMenuTitle(CharSequence menuTitle) {
         this.menu.setMenuTitle(menuTitle);
+    }
 
+    public void setContentView(int layoutResID) {
+        View.inflate(getContext(), layoutResID, this);
     }
 
     public void hide() {
@@ -44,8 +44,6 @@ public abstract class EasyDropDownMenuContent extends RelativeLayout implements 
 
     }
 
-    protected abstract int getResourcesId();
-
     protected void onShow() {
     }
 
@@ -59,7 +57,7 @@ public abstract class EasyDropDownMenuContent extends RelativeLayout implements 
 
     @Override
     protected void onDetachedFromWindow() {
-        super.onDetachedFromWindow();
         onHide();
+        super.onDetachedFromWindow();
     }
 }

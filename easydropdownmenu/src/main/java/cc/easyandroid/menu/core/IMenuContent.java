@@ -1,6 +1,6 @@
-package cc.easyandroid.menu;
+package cc.easyandroid.menu.core;
 
-public interface IMenuHandle {
+public interface IMenuContent {
     void bandMenu(IMenu menu);
 
     void loadData();

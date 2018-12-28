@@ -1,4 +1,4 @@
-package cc.easyandroid.menu;
+package cc.easyandroid.menu.core;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -6,13 +6,16 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class AnimView extends LinearLayout {
+public class AnimView extends RelativeLayout {
     private Animator animator_Show;
     private Animator animator_Dismiss;
 

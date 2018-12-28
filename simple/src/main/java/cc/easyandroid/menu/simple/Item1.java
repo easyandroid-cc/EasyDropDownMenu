@@ -12,7 +12,6 @@ import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
 import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
-import cc.easyandroid.menu.IMenuItem;
 
 /**
  * Created by cgpllx on 2016/10/17.

@@ -1,39 +1,62 @@
 package cc.easyandroid.menu.simple;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
+import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
-import cc.easyandroid.menu.EasyDropDownMenuContent;
+import cc.easyandroid.menu.widget.AbsSingleRowMenuContent;
 
-public class SingleListMenuContentLayout extends EasyDropDownMenuContent implements EasyFlexibleAdapter.OnItemClickListener {
+public class SingleListMenuContentLayout extends AbsSingleRowMenuContent {
     RecyclerView recyclerView;
-    EasyFlexibleAdapter adapter = new EasyFlexibleAdapter(this);
 
     public SingleListMenuContentLayout(Context context) {
         super(context);
         initView(context);
     }
 
+    @Override
+    protected void onSelectItems(List<IFlexible> list) {
+        setMenuTitle(TextUtils.join(",", list));
+    }
+
+    View edittext;
 
     public void initView(Context context) {
-        adapter.setMode(EasyFlexibleAdapter.MODE_SINGLE);
+        setContentView(R.layout.singlelist_layout);
+        getAdapter().setMode(EasyFlexibleAdapter.MODE_SINGLE);
+        View view = findViewById(R.id.content);
+        edittext = findViewById(R.id.edittext);
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.setAdapter(adapter);
 
+        recyclerView.setAdapter(getAdapter());
+        int heightPixels = context.getResources().getDisplayMetrics().heightPixels;
+        ViewGroup.LayoutParams layoutParams = view.getLayoutParams();//
+        System.out.println("cgp  layoutParams.height=" + layoutParams.height);
+        System.out.println("cgp  heightPixels=" + heightPixels);
+        layoutParams.height = (int) (heightPixels * 0.6);
+//        layoutParams.height = 500;
+        view.setLayoutParams(layoutParams);
     }
 
     @Override
-    protected int getResourcesId() {
-        return R.layout.singlelist_layout;
+    protected void onHide() {
+        super.onHide();
     }
 
     @Override
@@ -43,16 +66,10 @@ public class SingleListMenuContentLayout extends EasyDropDownMenuContent impleme
         item1.setName("不限");
         item1.setMenuItemTag(getDefaultMenuTitle());
         lists4.add(0, item1);
-        adapter.addItems(lists4);
-        adapter.notifyDataSetChanged();
+        getAdapter().addItems(lists4);
+        getAdapter().notifyDataSetChanged();
         show();
     }
-
-    @Override
-    public boolean isEmpty() {
-        return adapter.isEmpty();
-    }
-
 
     public ArrayList<Item1> dd1() {
         Text1 text1 = new Gson().fromJson(Text.text, Text1.class);
@@ -62,10 +79,8 @@ public class SingleListMenuContentLayout extends EasyDropDownMenuContent impleme
 
     @Override
     public boolean onItemClick(View view, int position) {
-        System.out.println("cgp size =" + adapter.getSelectedPositions().size());
-        Item1 item1 = (Item1) adapter.getItem(position);
-        setMenuTitle(item1.getMenuItemTag());
-        hide();
+        submit();
         return false;
     }
+
 }

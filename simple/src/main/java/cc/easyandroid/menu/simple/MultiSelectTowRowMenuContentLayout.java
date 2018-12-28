@@ -1,14 +1,10 @@
 package cc.easyandroid.menu.simple;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -18,7 +14,7 @@ import java.util.List;
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
-import cc.easyandroid.menu.EasyDropDownMenuContent;
+import cc.easyandroid.menu.core.EasyDropDownMenuContent;
 
 public class MultiSelectTowRowMenuContentLayout extends EasyDropDownMenuContent {
     RecyclerView recyclerView1;
@@ -73,6 +69,7 @@ public class MultiSelectTowRowMenuContentLayout extends EasyDropDownMenuContent 
     View submit;
 
     public void initView(Context context) {
+        setContentView(R.layout.multiselect_towrowlist_layout);
         adapter1.setMode(EasyFlexibleAdapter.MODE_SINGLE);
         adapter2.setMode(EasyFlexibleAdapter.MODE_MULTI);
         recyclerView1 = findViewById(R.id.recyclerView1);
@@ -121,11 +118,6 @@ public class MultiSelectTowRowMenuContentLayout extends EasyDropDownMenuContent 
         });
 
 
-    }
-
-    @Override
-    protected int getResourcesId() {
-        return R.layout.multiselect_towrowlist_layout;
     }
 
     @Override

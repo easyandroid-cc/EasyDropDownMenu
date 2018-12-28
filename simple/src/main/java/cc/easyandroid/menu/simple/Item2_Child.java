@@ -51,6 +51,10 @@ public class Item2_Child extends Text2.ResultEntity implements IFlexible<Item2_C
         return R.layout.item_menu_gridview;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 
     @Override
     public ListViewHolder createViewHolder(EasyFlexibleAdapter easyFlexibleListViewAdapter, LayoutInflater inflater, ViewGroup viewGroup) {

@@ -1,14 +1,10 @@
 package cc.easyandroid.menu.simple;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -16,66 +12,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
+import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
-import cc.easyandroid.menu.EasyDropDownMenuContent;
-import cc.easyandroid.menu.IMenu;
-import cc.easyandroid.menu.IMenuHandle;
+import cc.easyandroid.menu.widget.AbsSingleRowMenuContent;
 
-public class ComplexMenuContentLayout2 extends EasyDropDownMenuContent implements EasyFlexibleAdapter.OnItemClickListener {
+public class ComplexMenuContentLayout2 extends AbsSingleRowMenuContent implements EasyFlexibleAdapter.OnItemClickListener {
     public ComplexMenuContentLayout2(Context context) {
         super(context);
         onViewCreated(this);
-
     }
 
-    View reset;
-    View submit;
+    View resetView;
+    View submitView;
     RecyclerView recyclerView;
-    EasyFlexibleAdapter adapter = new EasyFlexibleAdapter(this);
-    final Model mModel = new Model();
 
     public void onViewCreated(View context) {
+        setContentView(R.layout.complexmultiselectlist_layout);
         recyclerView = findViewById(R.id.recyclerview);
-        reset = findViewById(R.id.reset);
-        submit = findViewById(R.id.submit);
+        resetView = findViewById(R.id.reset);
+        submitView = findViewById(R.id.submit);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        recyclerView.setAdapter(adapter);
-        adapter.setMode(EasyFlexibleAdapter.MODE_MULTI);
-        reset.setOnClickListener(new OnClickListener() {
+        recyclerView.setAdapter(getAdapter());
+        getAdapter().setMode(EasyFlexibleAdapter.MODE_MULTI);
+        resetView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.clearSelection();
+                reset();
             }
         });
-        submit.setOnClickListener(new OnClickListener() {
+        submitView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mModel.setChildSelectIndex(adapter.getSelectedPositions());
-                setMenuTitle(TextUtils.join(",", adapter.getSelectedPositions()));
-                hide();
+                submit();
             }
         });
 
     }
 
     @Override
-    protected int getResourcesId() {
-        return R.layout.complexmultiselectlist_layout;
-    }
-
-
-    @Override
-    public void onShow() {
-        adapter.clearSelection();
-        for (int position : mModel.selectPosition) {
-            adapter.addSelection(position);
-            adapter.notifyItemChanged(position);
-        }
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return adapter.isEmpty();
+    protected void onSelectItems(List<IFlexible> list) {
+        //這裡設置title 提交數據
+        setMenuTitle(TextUtils.join(",", list));
     }
 
     public ArrayList<Item2> dd2() {
@@ -85,27 +62,14 @@ public class ComplexMenuContentLayout2 extends EasyDropDownMenuContent implement
     }
 
     @Override
-    public boolean onItemClick(View view, int position) {
-        return adapter.isEmpty();
-    }
-
-    @Override
     public void loadData() {
         final ArrayList<Item2> lists4 = dd2();
+        ArrayList arrayList = new ArrayList();
         for (Item2 item2 : lists4) {
-            adapter.addItem(item2);
-            adapter.addItems(item2.getSubregions());
+            arrayList.add(item2);
+            arrayList.addAll(item2.getSubregions());
         }
-        adapter.notifyDataSetChanged();
-        show();
+        setMenuDatas(arrayList, true);
     }
 
-    public class Model {
-        public List<Integer> selectPosition = new ArrayList<>();
-
-        public void setChildSelectIndex(List<Integer> child) {
-            this.selectPosition.clear();
-            this.selectPosition.addAll(child);
-        }
-    }
 }
