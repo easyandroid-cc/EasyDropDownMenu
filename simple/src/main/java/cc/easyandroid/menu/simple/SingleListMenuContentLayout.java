@@ -76,8 +76,9 @@ public class SingleListMenuContentLayout extends AbsSingleRowMenuContent {
 
     @Override
     public boolean onItemClick(View view, int position) {
+        getAdapter().setItemChecked(position,true);
         submit();
-        return false;
+        return true;
     }
 
 }

@@ -86,7 +86,7 @@ public class MultiSelectSingleRowMenuContentLayout extends AbsSingleRowMenuConte
                 getAdapter().setItemChecked(0, false);
             }
         }
-        return false;
+        return true;
     }
 
 }

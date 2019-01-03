@@ -38,7 +38,8 @@ public class Main3Activity extends AppCompatActivity {
 
         easyDropDownMenu1.setMenuContentView(new SingleListMenuContentLayout(this));
         easyDropDownMenu2.setMenuContentView(new MultiSelectSingleRowMenuContentLayout(this));
-        easyDropDownMenu3.setMenuContentView(new MultiSelectTowRowMenuContentLayout(this));
+//       easyDropDownMenu3.setMenuContentView(new MultiSelectTowRowMenuContentLayout(this));
+         easyDropDownMenu3.setMenuContentView(new MultiSelectTowRowMenuContent1(this));
         easyDropDownMenu4.setMenuContentView(new ComplexMenuContentLayout2(this));
         easyDropDownMenu5.setMenuContentView(new ComplexMenuContentLayout2(this));
         easyDropDownMenu6.setMenuContentView(new SingleListMenuContentLayout(this));

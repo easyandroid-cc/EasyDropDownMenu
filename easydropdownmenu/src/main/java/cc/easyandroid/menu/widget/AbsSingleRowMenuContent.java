@@ -65,7 +65,7 @@ public class AbsSingleRowMenuContent extends EasyDropDownMenuContent implements 
 
     @Override
     public boolean onItemClick(View view, int position) {
-        return false;
+        return true;
     }
 
     @Override

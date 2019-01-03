@@ -12,6 +12,7 @@ import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
 import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
+import cc.easyandroid.menu.core.IMenuItem;
 
 /**
  * Created by cgpllx on 2016/10/17.
@@ -73,6 +74,11 @@ public class Item1 extends Text1.ResultEntity implements IFlexible<Item1.ListVie
             return menuItemTag;
         }
 
+    }
+
+    @Override
+    public List<Item1> getChildItems() {
+        return getSubregions();
     }
 
     @Override
