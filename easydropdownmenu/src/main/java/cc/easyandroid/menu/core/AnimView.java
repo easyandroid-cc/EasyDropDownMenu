@@ -126,7 +126,7 @@ public class AnimView extends RelativeLayout {
 
     }
 
-    private Animator createShowAnimator(final View together, int translationValue) {
+    protected Animator createShowAnimator(final View together, int translationValue) {
         int duration = together.getResources().getInteger(android.R.integer.config_shortAnimTime);
         ObjectAnimator animShow = ObjectAnimator.ofFloat(together, View.TRANSLATION_Y, translationValue, 0).setDuration(duration * 1);
         animShow.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -143,10 +143,10 @@ public class AnimView extends RelativeLayout {
 
     private static final int EASYALPHA = 100;
 
-    private ObjectAnimator createDismissAnimator(final View together, int translationValue) {
+    protected ObjectAnimator createDismissAnimator(final View together, int translationValue) {
         int duration = together.getResources().getInteger(android.R.integer.config_shortAnimTime);
-        ObjectAnimator animShow = ObjectAnimator.ofFloat(together, View.TRANSLATION_Y, 0, translationValue).setDuration(duration * 1);
-        animShow.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        ObjectAnimator animDismiss = ObjectAnimator.ofFloat(together, View.TRANSLATION_Y, 0, translationValue).setDuration(duration * 1);
+        animDismiss.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float animatedFraction = animation.getAnimatedFraction();
@@ -154,7 +154,7 @@ public class AnimView extends RelativeLayout {
                 ((ViewGroup) together.getParent()).setBackgroundColor(Color.argb(h, 0, 0, 0));//遮罩层
             }
         });
-        animShow.setInterpolator(new LinearInterpolator());
-        return animShow;
+        animDismiss.setInterpolator(new LinearInterpolator());
+        return animDismiss;
     }
 }
