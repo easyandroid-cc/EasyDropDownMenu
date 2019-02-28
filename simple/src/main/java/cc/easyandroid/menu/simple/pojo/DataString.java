@@ -1,4 +1,4 @@
-package cc.easyandroid.menu.simple;
+package cc.easyandroid.menu.simple.pojo;
 
 /**
  * Created by cgpllx on 2016/10/25.

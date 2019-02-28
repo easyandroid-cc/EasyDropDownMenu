@@ -4,6 +4,9 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 
+/**
+ * PopEasyDropDownMenu 不需要setMenuContentContainer，单个menu 的时候建议使用PopEasyDropDownMenu
+ */
 public class CommonEasyDropDownMenu extends EasyDropDownMenu {
 
     public CommonEasyDropDownMenu(Context context) {

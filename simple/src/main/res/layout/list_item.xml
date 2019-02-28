@@ -24,4 +24,12 @@
         android:clickable="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="50dp"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/q_ff0000"
+        android:hint="@string/app_name" />
 </LinearLayout>

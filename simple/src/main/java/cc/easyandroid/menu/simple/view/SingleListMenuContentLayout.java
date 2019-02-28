@@ -1,15 +1,11 @@
-package cc.easyandroid.menu.simple;
+package cc.easyandroid.menu.simple.view;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
 
 import com.google.gson.Gson;
 
@@ -19,6 +15,9 @@ import java.util.List;
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
+import cc.easyandroid.menu.simple.pojo.Item1;
+import cc.easyandroid.menu.simple.pojo.Text;
+import cc.easyandroid.menu.simple.pojo.Text1;
 import cc.easyandroid.menu.widget.AbsSingleRowMenuContent;
 
 public class SingleListMenuContentLayout extends AbsSingleRowMenuContent {

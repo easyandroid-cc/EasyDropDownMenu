@@ -1,4 +1,4 @@
-package cc.easyandroid.menu.simple;
+package cc.easyandroid.menu.simple.view;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -17,6 +17,9 @@ import java.util.List;
 
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.listfiltermenu.simple.R;
+import cc.easyandroid.menu.simple.pojo.Item2;
+import cc.easyandroid.menu.simple.pojo.Text;
+import cc.easyandroid.menu.simple.pojo.Text2;
 
 public class ComplexMenuContentLayout extends RelativeLayout {
     RecyclerView recyclerView;

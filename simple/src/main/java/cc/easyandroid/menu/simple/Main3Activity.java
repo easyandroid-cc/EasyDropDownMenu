@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.ViewGroup;
 
+import cc.easyandroid.menu.simple.view.ComplexMenuContentLayout2;
+import cc.easyandroid.menu.simple.view.MultiSelectSingleRowMenuContentLayout;
+import cc.easyandroid.menu.simple.view.MultiSelectTowRowMenuContent1;
+import cc.easyandroid.menu.simple.view.SingleListMenuContentLayout;
 import cc.easyandroid.menu.widget.EasyDropDownMenu;
 import cc.easyandroid.listfiltermenu.simple.R;
 import cc.easyandroid.menu.widget.EasyDropDownGroup;

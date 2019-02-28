@@ -1,4 +1,4 @@
-package cc.easyandroid.menu.simple;
+package cc.easyandroid.menu.simple.view;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,6 +14,9 @@ import java.util.List;
 import cc.easyandroid.easyrecyclerview.EasyFlexibleAdapter;
 import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
+import cc.easyandroid.menu.simple.pojo.Item2;
+import cc.easyandroid.menu.simple.pojo.Text;
+import cc.easyandroid.menu.simple.pojo.Text2;
 import cc.easyandroid.menu.widget.AbsSingleRowMenuContent;
 
 public class ComplexMenuContentLayout2 extends AbsSingleRowMenuContent implements EasyFlexibleAdapter.OnItemClickListener {

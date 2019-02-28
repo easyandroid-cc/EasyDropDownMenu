@@ -1,6 +1,8 @@
 package cc.easyandroid.menu.widget;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,9 @@ import android.widget.RelativeLayout;
 import cc.easyandroid.menu.core.AnimatorPopup;
 
 
+/**
+ * PopEasyDropDownMenu 不需要setMenuContentContainer，单个menu 的时候建议使用PopEasyDropDownMenu
+ */
 public class PopEasyDropDownMenu extends EasyDropDownMenu {
     protected AnimatorPopup pupupWindow;
 
@@ -62,8 +67,9 @@ public class PopEasyDropDownMenu extends EasyDropDownMenu {
     }
 
     protected void setupPupupWindow(final PopupWindow pupupWindow) {
-        //pupupWindow.setBackgroundDrawable(new ColorDrawable(Color.argb(0, 0, 0, 0)));
+        pupupWindow.setBackgroundDrawable(new ColorDrawable(Color.argb(0, 0, 0, 0)));
         pupupWindow.setOutsideTouchable(true);
+        pupupWindow.setAnimationStyle(0);
         pupupWindow.setFocusable(false);
         pupupWindow.setInputMethodMode(PopupWindow.INPUT_METHOD_NEEDED);
         pupupWindow.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);

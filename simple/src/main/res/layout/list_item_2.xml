@@ -20,7 +20,16 @@
         android:textColor="@color/menutitle_textcolor_selector"
         android:textSize="14sp" />
 
-    <!--<cc.easyandroid.menu.simple.CustomGridView-->
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:background="@color/q_ff0000"
+        android:hint="@string/app_name" />
+
+    <!--<cc.easyandroid.menu.simple.view.CustomGridView-->
         <!--android:id="@+id/gridview"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="100dp" />-->

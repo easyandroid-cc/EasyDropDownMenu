@@ -1,4 +1,4 @@
-package cc.easyandroid.menu.simple;
+package cc.easyandroid.menu.simple.pojo;
 
 import android.view.LayoutInflater;
 import android.view.View;
