@@ -75,4 +75,8 @@ public class ComplexMenuContentLayout2 extends AbsSingleRowMenuContent implement
         setMenuDatas(arrayList, true);
     }
 
+    @Override
+    public boolean onItemClick(View view, int position) {
+        return super.onItemClick(view, position);
+    }
 }
