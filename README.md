@@ -4,7 +4,7 @@ EasyDropDownMenu
 ![License MIT](https://img.shields.io/badge/Apache-2.0-brightgreen)
 
 ## 
-<img src="https://raw.githubusercontent.com/easyandroid-cc/EasyDropDownMenu/master/images/1616832321436030.gif.gif" width="50%" height="50%"/>
+<img src="https://raw.githubusercontent.com/easyandroid-cc/EasyDropDownMenu/master/images/1616832321436030.gif" width="50%" height="50%"/>
 
 ## 说明
 这是一个非常常用的筛选菜单
