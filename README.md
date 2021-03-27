@@ -4,7 +4,7 @@ EasyDropDownMenu
 ![License MIT](https://img.shields.io/badge/Apache-2.0-brightgreen)
 
 ## 说明
-这是一个非常常用的筛选菜单,已在多个项目中使用
+这是一个非常常用的筛选菜单,使用PopupWindow实现，已在多个项目中完美使用
 
 ## 
 <img src="https://raw.githubusercontent.com/easyandroid-cc/EasyDropDownMenu/master/images/1616832321436030.gif" width="50%" height="50%"/>
