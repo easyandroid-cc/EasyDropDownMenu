@@ -4,15 +4,17 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import cc.easyandroid.menu.R;
 import cc.easyandroid.menu.core.AnimView;
-import cc.easyandroid.menu.core.EasyDropDownMenuContent;
 import cc.easyandroid.menu.core.IMenu;
-import cc.easyandroid.menu.core.IMenuContent;
+import cc.easyandroid.menu.core.MenuAdapter;
 
 public class EasyDropDownMenu extends AnimView implements IMenu {
     protected CharSequence mDefaultMenuTitle;
@@ -20,18 +22,29 @@ public class EasyDropDownMenu extends AnimView implements IMenu {
     protected ViewGroup mMenuContentContainer;//容器這個容器一般是公用的(這個需要傳進來)
     protected ViewGroup mMenuContentView;//
 
+    MenuAdapter menuAdapter;
+
+    public void setMenuAdapter(MenuAdapter menuAdapter) {
+        this.menuAdapter = menuAdapter;
+        menuAdapter.onAttachedToMenu(this);
+        this.mMenuContentView = menuAdapter.getMenuContentView();
+    }
+
+    public MenuAdapter getMenuAdapter() {
+        return menuAdapter;
+    }
 
     protected void setMenuContentContainer(ViewGroup menuContentContainer) {
         this.mMenuContentContainer = menuContentContainer;
         this.mMenuContentContainer.setVisibility(GONE);
     }
 
-    public void setMenuContentView(ViewGroup menuContentView) {
-        this.mMenuContentView = menuContentView;
-        if (mMenuContentView instanceof IMenuContent) {
-            ((EasyDropDownMenuContent) mMenuContentView).bandMenu(this);
-        }
-    }
+   // public void setMenuContentView(ViewGroup menuContentView) {
+     //   this.mMenuContentView = menuContentView;
+//        if (mMenuContentView instanceof IMenuContent) {
+//            ((EasyDropDownMenuContent) mMenuContentView).bandMenu(this);
+//        }
+   // }
 
     public ViewGroup getMenuContentView() {
         return mMenuContentView;
@@ -56,15 +69,15 @@ public class EasyDropDownMenu extends AnimView implements IMenu {
 
         int menuTitleLayoutResourceId = a.getResourceId(R.styleable.EasyDropDownMenu_menuTitleView, R.layout.menu_title_view);
         CharSequence menuTitle = a.getText(R.styleable.EasyDropDownMenu_menuTitle);
-        int menuContentViewResourceId = a.getResourceId(R.styleable.EasyDropDownMenu_menuContentView, 0);
+      //  int menuContentViewResourceId = a.getResourceId(R.styleable.EasyDropDownMenu_menuContentView, 0);
 
         a.recycle();
         if (menuTitleLayoutResourceId > 0) {
             setMenuTitleLayoutResourceId(menuTitleLayoutResourceId);
         }
-        if (menuContentViewResourceId > 0) {
-            setMenuContentViewResourceId(menuContentViewResourceId);
-        }
+       // if (menuContentViewResourceId > 0) {
+          //  setMenuContentViewResourceId(menuContentViewResourceId);
+       // }
         if (!TextUtils.isEmpty(menuTitle)) {
             setDefaultMenuTitle(menuTitle);
             setMenuTitle(menuTitle);
@@ -75,6 +88,7 @@ public class EasyDropDownMenu extends AnimView implements IMenu {
     public void addView(View childView, int index, ViewGroup.LayoutParams params) {
         super.addView(childView, index, params);
     }
+
     public void setMenuTitle(CharSequence menuTitle) {
         setMenuTitle(menuTitle, false);
     }
@@ -121,10 +135,10 @@ public class EasyDropDownMenu extends AnimView implements IMenu {
     /**
      * 设置弹出的view
      */
-    public void setMenuContentViewResourceId(int menuContentViewResourceId) {
-        ViewGroup menuContentView = (ViewGroup) View.inflate(getContext(), menuContentViewResourceId, null);
-        setMenuContentView(menuContentView);
-    }
+//    public void setMenuContentViewResourceId(int menuContentViewResourceId) {
+//        ViewGroup menuContentView = (ViewGroup) View.inflate(getContext(), menuContentViewResourceId, null);
+//        setMenuContentView(menuContentView);
+//    }
 
     protected void onMenuTitleViewCreated(View menuTitleView, EasyDropDownMenu easyDropDownMenu) {
         //no use
@@ -139,9 +153,15 @@ public class EasyDropDownMenu extends AnimView implements IMenu {
     }
 
     public void show() {
-        if (mMenuContentView instanceof IMenuContent) {
-            if (((IMenuContent) mMenuContentView).isEmpty()) {//检查数据是否是null，
-                ((IMenuContent) mMenuContentView).loadData();
+        if(menuAdapter==null){
+            Log.e("EasyDropDownMenu","menuAdapter is null");
+            return;
+        }
+        if (menuAdapter.isEmpty(menuAdapter.getViewType())) {//检查数据是否是null，
+            ArrayList data=menuAdapter.loadData(menuAdapter.getViewType());//请求的限制按钮点击
+            if(data!=null&&!data.isEmpty()){
+                menuAdapter.setMenuData(data,false);
+            }else{
                 return;
             }
         }
@@ -149,6 +169,8 @@ public class EasyDropDownMenu extends AnimView implements IMenu {
             if (showlistener != null) {
                 showlistener.onShow(this);
             }
+            //fix : The specified child already has a parent. You must call removeView() on the child's parent first
+            mMenuContentContainer.removeView(mMenuContentView);
             mMenuContentContainer.addView(mMenuContentView);
             onShow();
             mMenuContentContainer.setVisibility(VISIBLE);
@@ -170,8 +192,6 @@ public class EasyDropDownMenu extends AnimView implements IMenu {
     public CharSequence getDefaultMenuTitle() {
         return mDefaultMenuTitle;
     }
-
-
 
 
     //顯示動畫執行完畢

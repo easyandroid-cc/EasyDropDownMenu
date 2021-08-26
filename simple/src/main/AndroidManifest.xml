@@ -12,7 +12,7 @@
         <!-- android:windowSoftInputMode="adjustPan|stateHidden|adjustUnspecified" -->
         <!-- android:windowSoftInputMode="adjustNothing" -->
         <!-- android:configChanges="orientation|keyboardHidden|screenSize" -->
-        <activity android:name="cc.easyandroid.menu.simple.MainActivity">
+        <activity android:name="cc.easyandroid.menu.simple.Main3Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

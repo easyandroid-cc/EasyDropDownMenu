@@ -12,7 +12,10 @@
         android:id="@+id/easyDropDownMenuContainer"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <cc.easyandroid.menu.widget.CommonEasyDropDownMenu
             android:id="@+id/menuFilter1"
@@ -69,6 +72,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:menuTitle="More"
             app:menuTitleView="@layout/menu_title_layout1" />
+
         <cc.easyandroid.menu.widget.PopEasyDropDownMenu
             android:id="@+id/menuFilter5"
             android:layout_width="0dp"
@@ -82,6 +86,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:menuTitle="Pop"
             app:menuTitleView="@layout/menu_title_layout1" />
+
         <cc.easyandroid.menu.widget.PopEasyDropDownMenu
             android:id="@+id/menuFilter6"
             android:layout_width="0dp"

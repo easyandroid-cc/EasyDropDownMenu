@@ -66,7 +66,6 @@ public class Item1 extends Text1.ResultEntity implements IFlexible<Item1.ListVie
         this.menuItemTag = menuItemTag;
     }
 
-    @Override
     public CharSequence getMenuItemTag() {
         if (menuItemTag == null) {
             return getName();
@@ -86,7 +85,6 @@ public class Item1 extends Text1.ResultEntity implements IFlexible<Item1.ListVie
         return getMenuItemTag().toString();
     }
 
-    @Override
     public HashMap<String, String> getParameter() {
         return null;
     }

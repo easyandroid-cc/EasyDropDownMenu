@@ -2,6 +2,7 @@ package cc.easyandroid.menu.core;
 
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import cc.easyandroid.menu.core.IMenu;
@@ -9,35 +10,15 @@ import cc.easyandroid.menu.core.IMenuContent;
 
 public abstract class EasyDropDownMenuContent extends RelativeLayout implements IMenuContent {
 
-    protected IMenu menu;
+    protected final int[] INIT_SELECT_OPTION=initSelectOption();;//每一列 没有选中的时候默认的选中的位置
 
     public EasyDropDownMenuContent(Context context) {
         super(context);
     }
 
-    @Override
-    public void bandMenu(IMenu menu) {
-        this.menu = menu;
-    }
-
-    public void setMenuTitle(CharSequence menuTitle) {
-        this.menu.setMenuTitle(menuTitle);
-    }
 
     public void setContentView(int layoutResID) {
         View.inflate(getContext(), layoutResID, this);
-    }
-
-    public void hide() {
-        menu.hide();
-    }
-
-    public void show() {
-        menu.show();
-    }
-
-    public CharSequence getDefaultMenuTitle() {
-        return menu.getDefaultMenuTitle();
     }
 
     protected void onHide() {
@@ -46,8 +27,6 @@ public abstract class EasyDropDownMenuContent extends RelativeLayout implements 
 
     protected void onShow() {
     }
-
-    public abstract boolean isEmpty();
 
     @Override
     protected void onAttachedToWindow() {
@@ -59,5 +38,21 @@ public abstract class EasyDropDownMenuContent extends RelativeLayout implements 
     protected void onDetachedFromWindow() {
         onHide();
         super.onDetachedFromWindow();
+    }
+
+    protected Listener mListener;
+
+    @Override
+    public void setListener(Listener listener) {
+        this.mListener = listener;
+    }
+
+    @Override
+    public ViewGroup getContentView() {
+        return this;
+    }
+
+    protected int[] initSelectOption() {
+        return new int[]{0, 0};
     }
 }

@@ -10,6 +10,7 @@ import cc.easyandroid.easyrecyclerview.EasyRecyclerView;
 /**
  * Created by cgpllx on 2016/10/25.
  */
+@Deprecated
 public class CustomGridView extends RecyclerView {
     public CustomGridView(Context context, AttributeSet attrs) {
         super(context, attrs);

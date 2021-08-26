@@ -1,6 +1,5 @@
 package cc.easyandroid.menu.core;
 
-import cc.easyandroid.menu.widget.EasyDropDownMenu;
 
 public interface IMenu {
 

@@ -20,17 +20,15 @@ import cc.easyandroid.menu.simple.pojo.Text;
 import cc.easyandroid.menu.simple.pojo.Text1;
 import cc.easyandroid.menu.widget.AbsSingleRowMenuContent;
 
+/**
+ * 单列单选
+ */
 public class SingleListMenuContentLayout extends AbsSingleRowMenuContent {
     RecyclerView recyclerView;
 
     public SingleListMenuContentLayout(Context context) {
         super(context);
         initView(context);
-    }
-
-    @Override
-    protected void onSelectItems(List<IFlexible> list) {
-        setMenuTitle(TextUtils.join(",", list));
     }
 
     View edittext;
@@ -55,29 +53,10 @@ public class SingleListMenuContentLayout extends AbsSingleRowMenuContent {
         super.onHide();
     }
 
-    @Override
-    public void loadData() {
-        final ArrayList<Item1> lists4 = dd1();
-        Item1 item1 = new Item1();
-        item1.setName("不限");
-        item1.setMenuItemTag(getDefaultMenuTitle());
-        lists4.add(0, item1);
-        getAdapter().addItems(lists4);
-        getAdapter().notifyDataSetChanged();
-        show();
-    }
-
-    public ArrayList<Item1> dd1() {
-        Text1 text1 = new Gson().fromJson(Text.text, Text1.class);
-        final ArrayList<Item1> lists = text1.getResult();
-        return lists;
-    }
 
     @Override
-    public boolean onItemClick(View view, int position) {
-        getAdapter().setItemChecked(position,true);
+    public void onItemClick(int position) {
         submit();
-        return true;
     }
 
 }

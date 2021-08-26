@@ -8,7 +8,7 @@
         <!--title-->
         <attr name="menuTitle" format="reference|string" />
         <!--menuContent ResourceId-->
-        <attr name="menuContentView" format="reference" />
+<!--        <attr name="menuContentView" format="reference" />-->
         <!--menuTitle ResourceId-->
         <attr name="menuTitleView" format="reference" />
     </declare-styleable>

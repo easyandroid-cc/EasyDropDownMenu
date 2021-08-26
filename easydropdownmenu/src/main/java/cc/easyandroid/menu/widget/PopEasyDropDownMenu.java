@@ -15,6 +15,7 @@ import cc.easyandroid.menu.core.AnimatorPopup;
 
 /**
  * PopEasyDropDownMenu 不需要setMenuContentContainer，单个menu 的时候建议使用PopEasyDropDownMenu
+ * 点击pop 外部可以自动隐藏
  */
 public class PopEasyDropDownMenu extends EasyDropDownMenu {
     protected AnimatorPopup pupupWindow;

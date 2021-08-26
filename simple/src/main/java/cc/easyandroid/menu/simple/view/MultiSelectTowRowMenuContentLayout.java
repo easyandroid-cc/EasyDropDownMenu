@@ -20,6 +20,7 @@ import cc.easyandroid.menu.simple.pojo.Item1;
 import cc.easyandroid.menu.simple.pojo.Text;
 import cc.easyandroid.menu.simple.pojo.Text1;
 
+@Deprecated
 public class MultiSelectTowRowMenuContentLayout extends EasyDropDownMenuContent {
     RecyclerView recyclerView1;
     RecyclerView recyclerView2;
@@ -106,19 +107,19 @@ public class MultiSelectTowRowMenuContentLayout extends EasyDropDownMenuContent 
                 if (selectedPositions.size() == 0) {
                     List<Integer> list1 = adapter1.getSelectedPositions();
                     if (list1.size() >= 1) {
-                        setMenuTitle(adapter1.getItem(list1.get(0)).toString());
+                       // setMenuTitle(adapter1.getItem(list1.get(0)).toString());
                     }
                 } else if (selectedPositions.size() == 1) {
-                    setMenuTitle(adapter2.getItem(selectedPositions.get(0)).toString());
+                    //setMenuTitle(adapter2.getItem(selectedPositions.get(0)).toString());
                 } else if (selectedPositions.size() > 1) {
                     List<IFlexible> list = new ArrayList<>();
                     for (int index : selectedPositions) {
                         IFlexible iFlexible = adapter2.getItem(index);
                         list.add(iFlexible);
                     }
-                    setMenuTitle(TextUtils.join(",", list));
+                   // setMenuTitle(TextUtils.join(",", list));
                 }
-                hide();
+                //hide();
             }
         });
         int heightPixels = context.getResources().getDisplayMetrics().heightPixels;
@@ -127,33 +128,6 @@ public class MultiSelectTowRowMenuContentLayout extends EasyDropDownMenuContent 
         content.requestLayout();
 
     }
-
-    @Override
-    public void loadData() {
-
-        final ArrayList<Item1> lists4 = dd1();
-        for (Item1 item1 : lists4) {
-            ArrayList<Item1> subList = item1.getSubregions();
-            if (subList != null && subList.size() > 0) {
-                Item1 i = new Item1();
-                i.setName("全" + item1.getName());
-                subList.add(0, i);
-            }
-        }
-        Item1 nomit = new Item1();
-        nomit.setName("不限");
-        nomit.setMenuItemTag(getDefaultMenuTitle());
-        lists4.add(0, nomit);
-        adapter1.addItems(lists4);
-        adapter1.notifyDataSetChanged();
-        show();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return adapter1.isEmpty();
-    }
-
 
     protected void reset() {
         adapter1.clearSelection();
@@ -182,6 +156,21 @@ public class MultiSelectTowRowMenuContentLayout extends EasyDropDownMenuContent 
         Text1 text1 = new Gson().fromJson(Text.text, Text1.class);
         final ArrayList<Item1> lists = text1.getResult();
         return lists;
+    }
+
+    @Override
+    public ViewGroup getContentView() {
+        return null;
+    }
+
+    @Override
+    public void setMenuDatas(ArrayList<IFlexible> items, boolean needShow, Integer... defaultPosition) {
+
+    }
+
+    @Override
+    public void setListener(Listener listener) {
+
     }
 
     public class Model {

@@ -19,8 +19,8 @@ import cc.easyandroid.menu.simple.pojo.Text;
 import cc.easyandroid.menu.simple.pojo.Text2;
 import cc.easyandroid.menu.widget.AbsSingleRowMenuContent;
 
-public class ComplexMenuContentLayout2 extends AbsSingleRowMenuContent implements EasyFlexibleAdapter.OnItemClickListener {
-    public ComplexMenuContentLayout2(Context context) {
+public class ComplexMenuContentLayout2 extends AbsSingleRowMenuContent  {
+    public  ComplexMenuContentLayout2(Context context) {
         super(context);
         onViewCreated(this);
     }
@@ -50,33 +50,5 @@ public class ComplexMenuContentLayout2 extends AbsSingleRowMenuContent implement
             }
         });
 
-    }
-
-    @Override
-    protected void onSelectItems(List<IFlexible> list) {
-        //這裡設置title 提交數據
-        setMenuTitle(TextUtils.join(",", list));
-    }
-
-    public ArrayList<Item2> dd2() {
-        Text2 text1 = new Gson().fromJson(Text.text, Text2.class);
-        final ArrayList<Item2> lists = text1.getResult();
-        return lists;
-    }
-
-    @Override
-    public void loadData() {
-        final ArrayList<Item2> lists4 = dd2();
-        ArrayList arrayList = new ArrayList();
-        for (Item2 item2 : lists4) {
-            arrayList.add(item2);
-            arrayList.addAll(item2.getSubregions());
-        }
-        setMenuDatas(arrayList, true);
-    }
-
-    @Override
-    public boolean onItemClick(View view, int position) {
-        return super.onItemClick(view, position);
     }
 }

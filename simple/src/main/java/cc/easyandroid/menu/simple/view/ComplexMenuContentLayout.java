@@ -21,6 +21,7 @@ import cc.easyandroid.menu.simple.pojo.Item2;
 import cc.easyandroid.menu.simple.pojo.Text;
 import cc.easyandroid.menu.simple.pojo.Text2;
 
+@Deprecated
 public class ComplexMenuContentLayout extends RelativeLayout {
     RecyclerView recyclerView;
     EasyFlexibleAdapter adapter = new EasyFlexibleAdapter();
