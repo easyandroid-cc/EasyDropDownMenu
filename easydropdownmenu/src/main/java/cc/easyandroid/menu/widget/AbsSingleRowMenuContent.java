@@ -55,7 +55,7 @@ public class AbsSingleRowMenuContent extends EasyDropDownMenuContent {
 
     protected void reset() {
         ADAPTER.clearSelection();
-        ADAPTER.setItemChecked(0, true);
+        ADAPTER.setItemChecked(INIT_SELECT_OPTION[0], true);
     }
 
     protected void submit() {
@@ -94,7 +94,7 @@ public class AbsSingleRowMenuContent extends EasyDropDownMenuContent {
 
 
     public void setMenuDatas(ArrayList<IFlexible> items, boolean needShow, Integer... defaultPosition) {
-        ADAPTER.addItems(items);
+        ADAPTER.setItems(items);
         selectedPositions.addAll(Arrays.asList(defaultPosition));
         for (int position : selectedPositions) {
             ADAPTER.addSelection(position);

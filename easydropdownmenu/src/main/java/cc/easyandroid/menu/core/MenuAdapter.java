@@ -55,6 +55,14 @@ public abstract class MenuAdapter<MVH extends IMenuContent> implements IMenuCont
         return menu.getDefaultMenuTitle();
     }
 
+    public void setMenuTitle(CharSequence menuTitle,boolean forceHighlight){
+        menu.setMenuTitle(menuTitle,forceHighlight);
+    }
+
+    public IMenu getMenu() {
+        return menu;
+    }
+
     ArrayList<IFlexible> mItems = new ArrayList<>();
 
     public void setMenuData(ArrayList<IFlexible> items, boolean needShow, Integer... defaultPosition) {
@@ -64,6 +72,9 @@ public abstract class MenuAdapter<MVH extends IMenuContent> implements IMenuCont
         if(needShow){
             menu.show();
         }
+    }
+    public void setMenuTitle(CharSequence title){
+        menu.setMenuTitle(title);
     }
 
 }
