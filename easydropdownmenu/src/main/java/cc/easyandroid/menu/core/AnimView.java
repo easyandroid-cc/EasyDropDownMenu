@@ -7,8 +7,6 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +31,6 @@ public class AnimView extends RelativeLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     protected boolean showInAnim(final ViewGroup animView) {
         animView.setVisibility(View.INVISIBLE);
         if (animator_Show != null && animator_Show.isRunning()) {

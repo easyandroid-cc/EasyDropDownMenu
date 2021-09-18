@@ -12,7 +12,7 @@ import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
 import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
 
-public class Item2_Child extends Text2.ResultEntity implements IFlexible<Item2_Child.ListViewHolder> {
+public abstract class Item2_Child extends Text2.ResultEntity implements IFlexible<Item2_Child.ListViewHolder> {
 
 
     @Override

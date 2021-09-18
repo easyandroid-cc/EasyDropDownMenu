@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:node="replace"
+    tools:overrideLibrary="cc.easyandroid.easyrecyclerview"
     package="cc.easyandroid.listfiltermenu.simple">
-
+    <uses-sdk
+        tools:overrideLibrary="cc.easyandroid.easyrecyclerview"
+        android:minSdkVersion="21"
+        android:targetSdkVersion="29" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        tools:node="replace"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 

@@ -26,7 +26,9 @@ public abstract class AbsTowListsMenuContent extends EasyDropDownMenuContent {
             ADAPTER2.clearSelection();//清空选择项
             if (subList != null && subList.size() > 0) {
                 ADAPTER2.setItems(subList);
-                ADAPTER2.addSelection(INIT_SELECT_OPTION[1]);
+                if (INIT_SELECT_OPTION[1] >= 0) {
+                    ADAPTER2.addSelection(INIT_SELECT_OPTION[1]);
+                }
                 ADAPTER2.notifyDataSetChanged();
                 showList2();
             } else {
@@ -39,7 +41,7 @@ public abstract class AbsTowListsMenuContent extends EasyDropDownMenuContent {
     protected final EasyFlexibleAdapter ADAPTER2 = new EasyFlexibleAdapter(new EasyFlexibleAdapter.OnItemClickListener() {
         @Override
         public boolean onItemClick(View view, int position) {
-            if(INIT_SELECT_OPTION[1]<0){
+            if (list2Click(view, position) || INIT_SELECT_OPTION[1] < 0) {
                 return true;
             }
             if (position == INIT_SELECT_OPTION[1]) {
@@ -47,13 +49,13 @@ public abstract class AbsTowListsMenuContent extends EasyDropDownMenuContent {
                 ADAPTER2.setItemChecked(INIT_SELECT_OPTION[1], true);
                 ADAPTER2.notifyItemChanged(INIT_SELECT_OPTION[1]);
                 return false;//返回 false  不让toggleActivation 执行
-            } else  {
+            } else {
                 if (ADAPTER2.isSelected(INIT_SELECT_OPTION[1])) {
                     ADAPTER2.setItemChecked(INIT_SELECT_OPTION[1], false);
                     ADAPTER2.setItemChecked(position, true);
                     return false;
-                } else {
-                    if (ADAPTER2.isSelected(position) && ADAPTER2.getSelectedPositions().size() == 1) {
+                } else {//如果是多选
+                    if (ADAPTER2.getMode() == EasyFlexibleAdapter.MODE_MULTI && ADAPTER2.isSelected(position) && ADAPTER2.getSelectedPositions().size() == 1) {
                         ADAPTER2.clearSelection();
                         ADAPTER2.setItemChecked(INIT_SELECT_OPTION[1], true);
                         ADAPTER2.notifyDataSetChanged();
@@ -64,6 +66,11 @@ public abstract class AbsTowListsMenuContent extends EasyDropDownMenuContent {
             return true;
         }
     });
+
+    protected boolean list2Click(View view, int position) {
+        return false;
+    }
+
     protected final List<Integer> mSelectPosition1 = new ArrayList<>();
     protected final List<Integer> mSelectposition2 = new ArrayList<>();
 
@@ -156,7 +163,7 @@ public abstract class AbsTowListsMenuContent extends EasyDropDownMenuContent {
 
     public void setMenuDatas(ArrayList<IFlexible> items, boolean needShow, Integer... defaultPosition) {
         ADAPTER1.setItems(items);
-        if(defaultPosition!=null&&defaultPosition.length>0){
+        if (defaultPosition != null && defaultPosition.length > 0) {
             mSelectPosition1.clear();
             mSelectPosition1.addAll(Arrays.asList(defaultPosition));
             handleSelectItem();

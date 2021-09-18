@@ -1,7 +1,6 @@
 package cc.easyandroid.menu.widget;
 
 import android.content.Context;
-import android.support.annotation.CallSuper;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -46,7 +45,6 @@ public class AbsSingleRowMenuContent extends EasyDropDownMenuContent {
         }
     });
 
-    @CallSuper
     protected void onItemClick(int position) {//这里要检查是否没有选中项目
 
     }
