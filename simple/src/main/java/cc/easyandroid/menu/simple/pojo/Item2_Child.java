@@ -12,7 +12,7 @@ import cc.easyandroid.easyrecyclerview.holders.FlexibleViewHolder;
 import cc.easyandroid.easyrecyclerview.items.IFlexible;
 import cc.easyandroid.listfiltermenu.simple.R;
 
-public abstract class Item2_Child extends Text2.ResultEntity implements IFlexible<Item2_Child.ListViewHolder> {
+public   class Item2_Child extends Text2.ResultEntity implements IFlexible<Item2_Child.ListViewHolder> {
 
 
     @Override
@@ -22,6 +22,16 @@ public abstract class Item2_Child extends Text2.ResultEntity implements IFlexibl
 
     @Override
     public void setEnabled(boolean b) {
+    }
+
+    @Override
+    public boolean isHidden() {
+        return false;
+    }
+
+    @Override
+    public void setHidden(boolean hidden) {
+
     }
 
     @Override
@@ -36,7 +46,7 @@ public abstract class Item2_Child extends Text2.ResultEntity implements IFlexibl
 
     @Override
     public int getSpanSize(int spanCount, int position) {
-        return spanCount;
+        return 1;
     }
 
     @Override

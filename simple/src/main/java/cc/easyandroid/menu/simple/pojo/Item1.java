@@ -30,6 +30,16 @@ public class Item1 extends Text1.ResultEntity implements IFlexible<Item1.ListVie
     }
 
     @Override
+    public boolean isHidden() {
+        return false;
+    }
+
+    @Override
+    public void setHidden(boolean hidden) {
+
+    }
+
+    @Override
     public boolean isSelectable() {
         return true;
     }

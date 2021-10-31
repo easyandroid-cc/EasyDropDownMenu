@@ -2,11 +2,11 @@ package cc.easyandroid.menu.simple;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.google.gson.Gson;
 
@@ -52,7 +52,7 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view,   Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         easyDropDownGroup = view.findViewById(R.id.easyDropDownMenuContainer);
         easyDropDownMenu1 = view.findViewById(R.id.menuFilter1);

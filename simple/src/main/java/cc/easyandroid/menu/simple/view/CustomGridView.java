@@ -1,9 +1,10 @@
 package cc.easyandroid.menu.simple.view;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.widget.GridView;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import cc.easyandroid.easyrecyclerview.EasyRecyclerView;
 

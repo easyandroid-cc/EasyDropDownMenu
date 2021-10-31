@@ -16,6 +16,7 @@ public abstract class AbsTowListsMenuContent extends EasyDropDownMenuContent {
 
 
     protected final EasyFlexibleAdapter ADAPTER1 = new EasyFlexibleAdapter(new EasyFlexibleAdapter.OnItemClickListener() {
+
         @Override
         public boolean onItemClick(View view, int position) {
             if (ADAPTER1.isSelected(position)) {

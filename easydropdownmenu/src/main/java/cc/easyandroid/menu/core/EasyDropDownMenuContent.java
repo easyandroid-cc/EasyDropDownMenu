@@ -5,8 +5,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import cc.easyandroid.menu.core.IMenu;
-import cc.easyandroid.menu.core.IMenuContent;
 
 public abstract class EasyDropDownMenuContent extends RelativeLayout implements IMenuContent {
 

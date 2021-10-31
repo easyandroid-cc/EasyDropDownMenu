@@ -46,7 +46,6 @@ public class AbsSingleRowMenuContent extends EasyDropDownMenuContent {
     });
 
     protected void onItemClick(int position) {//这里要检查是否没有选中项目
-
     }
 
     protected final List<Integer> selectedPositions = new ArrayList<>();

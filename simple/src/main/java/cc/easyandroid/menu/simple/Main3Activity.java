@@ -1,8 +1,6 @@
 package cc.easyandroid.menu.simple;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.ViewGroup;
 
 import com.google.gson.Gson;
@@ -23,6 +21,8 @@ import cc.easyandroid.menu.widget.EasyDropDownMenu;
 import cc.easyandroid.listfiltermenu.simple.R;
 import cc.easyandroid.menu.widget.EasyDropDownGroup;
 import cc.easyandroid.menu.widget.PopEasyDropDownMenu;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class Main3Activity extends AppCompatActivity {
     EasyDropDownMenu easyDropDownMenu1;
@@ -138,9 +138,9 @@ public class Main3Activity extends AppCompatActivity {
                 final ArrayList<Item1> lists4 = dd1();
                 Item1 item1 = new Item1();
                 item1.setName("不限");
-                 item1.setMenuItemTag(getDefaultMenuTitle());
+                item1.setMenuItemTag(getDefaultMenuTitle());
                 lists4.add(0, item1);
-                    setMenuData(lists4,true,0);
+                setMenuData(lists4,true,0);
                 return null;
             }
         });

@@ -28,6 +28,16 @@ public class Item2 extends Text2.ResultEntity implements IFlexible<Item2.ListVie
     }
 
     @Override
+    public boolean isHidden() {
+        return false;
+    }
+
+    @Override
+    public void setHidden(boolean hidden) {
+
+    }
+
+    @Override
     public boolean isSelectable() {
         return false;
     }
@@ -39,7 +49,7 @@ public class Item2 extends Text2.ResultEntity implements IFlexible<Item2.ListVie
 
     @Override
     public int getSpanSize(int spanCount, int position) {
-        return 1;
+        return spanCount;
     }
 
     @Override
