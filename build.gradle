@@ -13,29 +13,29 @@ buildscript {
 //        maven {  //私有maven仓库路径
 //            url 'http://192.168.3.250:8081/nexus/content/repositories/jitpack.io/' }
         //   maven { url "http://localhost:8081/artifactory/aps101_public_group/" }
-       // google()
-        maven {
-            allowInsecureProtocol true
-            url "http://192.168.3.201:8082/artifactory/google/"
-        }
-        maven {
-            allowInsecureProtocol true
-            url "http://192.168.3.201:8082/artifactory/maven_google/"
-        }
-        maven {
-            allowInsecureProtocol true
-            url "http://192.168.3.201:8082/artifactory/aps101_repositories/"
-        }
+        google()
+//        maven {
+//            allowInsecureProtocol true
+//            url "http://192.168.3.201:8082/artifactory/google/"
+//        }
+//        maven {
+//            allowInsecureProtocol true
+//            url "http://192.168.3.201:8082/artifactory/maven_google/"
+//        }
+//        maven {
+//            allowInsecureProtocol true
+//            url "http://192.168.3.201:8082/artifactory/aps101_repositories/"
+//        }
 //        maven {
 //            url 'https://maven.google.com/'
 //            name 'Google'
 //        }
-        //  jcenter()
-//       mavenCentral()
-       //   maven { url "https://jitpack.io" }
+//          jcenter()
+       mavenCentral()
+          maven { url "https://jitpack.io" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.android.tools.build:gradle:7.0.4'
 //        classpath 'com.android.tools.build:gradle:4.1.2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -46,19 +46,19 @@ buildscript {
 
 allprojects {
     repositories {
-        maven {
-            allowInsecureProtocol true
-            url "http://192.168.3.201:8082/artifactory/google/"
-        }
-      //  google()
-        maven {
-            allowInsecureProtocol true
-            url "http://192.168.3.201:8082/artifactory/maven_google/"
-        }
-        maven {
-            allowInsecureProtocol true
-            url "http://192.168.3.201:8082/artifactory/aps101_repositories/"
-        }
+//        maven {
+//            allowInsecureProtocol true
+//            url "http://192.168.3.201:8082/artifactory/google/"
+//        }
+       //google()
+//        maven {
+//            allowInsecureProtocol true
+//            url "http://192.168.3.201:8082/artifactory/maven_google/"
+//        }
+//        maven {
+//            allowInsecureProtocol true
+//            url "http://192.168.3.201:8082/artifactory/aps101_repositories/"
+//        }
 //        maven {
 //            allowInsecureProtocol true
 //            url "http://192.168.3.201:8081/repository/maven-public/"
@@ -75,9 +75,9 @@ allprojects {
 //        }
         //jcenter()
 //        mavenCentral()
-        // maven { url "https://jitpack.io" }
-//        google()
-       // mavenCentral()
+         maven { url "https://jitpack.io" }
+        google()
+        mavenCentral()
     }
 }
 

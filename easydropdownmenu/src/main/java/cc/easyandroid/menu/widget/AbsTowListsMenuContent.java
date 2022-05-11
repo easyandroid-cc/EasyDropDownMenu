@@ -19,6 +19,11 @@ public abstract class AbsTowListsMenuContent extends EasyDropDownMenuContent {
 
         @Override
         public boolean onItemClick(View view, int position) {
+            if (!(view instanceof AbsTowListsMenuContent)) {//列表1 有数据，列表2 没有数据的时候单选
+                if (list1Click(view, position)) {
+                    return true;
+                }
+            }
             if (ADAPTER1.isSelected(position)) {
                 return true;
             }
@@ -75,6 +80,9 @@ public abstract class AbsTowListsMenuContent extends EasyDropDownMenuContent {
     });
 
     protected boolean list2Click(View view, int position) {
+        return false;
+    }
+    protected boolean list1Click(View view, int position) {
         return false;
     }
 
